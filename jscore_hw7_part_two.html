@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript_core_homework_7_part_1</title>
+</head>
+
+<body>
+    <script>
+        const MyMethods = Object.create({}, {
+            showConsole: {
+                value: function (data) {
+                    console.log(data)
+                },
+            },
+            Robots : {
+                value: function () {
+                    for (let i = 0 ; arguments.length > i ; i++) {
+                        this.showConsole(arguments[i].work())
+                    };
+                },
+            },
+        });
+        
+        //ROBOT
+        let robot = new Robot () ; 
+        function Robot(name,voice) {
+            this.name = 'Robot';
+            this.voice = 'a simple one.'
+        };
+        Robot.prototype.work = function (name,voice) {
+            name = this.name;
+            voice = this.voice;
+            MyMethods.showConsole('I am a ' + name + ', ' + voice);
+        };            
+        //-----
+
+        //COFFE ROBOT
+        function CoffeRobot() {
+            this.name = 'CoffeRobot';
+            this.voice = 'and i make a coffe for you';            
+        };        
+        CoffeRobot.prototype = Object.create(Robot.prototype);
+        CoffeRobot.prototype.constructor = CoffeRobot;
+        let robotСoffe = new CoffeRobot () ;
+        //-----
+
+        //ROBOT DANCER
+        function RobotDancer() {           
+        };       
+        RobotDancer.prototype = Object.create(Robot.prototype); 
+        RobotDancer.prototype.constructor = RobotDancer;               
+        let robotDancer = new RobotDancer () ;               
+        RobotDancer.prototype.setName = function (data) {
+            this.name = data;
+        };
+        RobotDancer.prototype.setVoice = function (data) {
+            this.voice = data;
+        };
+        robotDancer.setName('RobotDancer');
+        robotDancer.setVoice('and i gonna dance for you ;)');
+        //-----
+
+        //ROBOT COOKER
+        function RobotCooker() {
+            this.name = 'RobotCooker';
+            this.voice = 'and i make a food for you.'
+        };
+        RobotCooker.prototype = Object.create(Robot.prototype);
+        RobotCooker.prototype.constructor = RobotCooker;
+        let robotCoocker = new RobotCooker () ;
+        //-----
+        
+        MyMethods.Robots(robot,robotСoffe,robotDancer,robotCoocker)  
+        
+        
+
+       
+        
+        
+    </script>
+
+</body>
+
+</html>
