@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jscore_hw6</title>
+</head>
+<body>
+    <script>
+        const MyMethods = Object.create ({},{
+            showConsole : {
+                value : function (data) {
+                    console.log(data)
+                },
+            },
+        });
+        
+        //first task 
+        //a)
+
+        function checkAge (age) {
+           return age > 18? true : confirm('Do You have permission?');
+        };
+
+        //b)
+
+        function checkAge_1 (age) {
+            return (age > 18) || confirm('Do You have permission?');
+        }
+        
+        //second task
+
+        function SmalestFromArguments () {
+        let smalestOne = Infinity
+        for (let i = 0 ; i < arguments.length ; i++) {            
+            if ( arguments[i] < smalestOne ) {
+                smalestOne = arguments[i];
+            }                     
+        };
+        return smalestOne     
+    }; 
+        
+    </script>
+    
+</body>
+</html>

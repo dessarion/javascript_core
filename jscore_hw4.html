@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jscore_hw4</title>
+</head>
+<body>
+
+    <script>
+        function cnsl(data) {
+            console.log(data)
+        }
+        //first task
+        cnsl ('#1 ----- first task -----')
+        
+        let n = 5;
+        cnsl(n%2 == 0? 'even' : 'odd');
+
+        cnsl ('#1 ----- end of first task -----')
+        //end of first task
+
+        //second task       
+        cnsl ('#2 ----- second task -----')    
+        
+        function closerToTen (d1,d2) {
+            let cases = ((Math.abs(10-d1)>Math.abs(10-d2))? 1 : 0);
+            switch (cases) {
+                case 1 :
+                    cnsl('Closer is ' + d2)
+                    break
+                case 0 : 
+                    cnsl('Closer is ' + d1)
+                    break 
+                default :
+                    cnsl('They are on same distance')
+                    break       
+            }
+        };
+        closerToTen (-1.23 , 21.24);
+
+        cnsl ('#2 ----- end of second task -----') 
+        //end of second task
+
+        //third task
+        cnsl ('#3 ----- third task -----') 
+        
+        function incrementTo3 (i) {
+           for ( ; i < 10000 ; i += 3) {
+               cnsl(i) 
+           }
+        };
+        incrementTo3(1000);
+
+        cnsl ('#3 ----- end of third task -----') 
+        //end of third task
+
+        //fourth task
+        cnsl ('#4 ----- fourth task -----') 
+
+        function incrementTo2 (start) {
+            let i = 0;
+           do {               
+               cnsl(start);               
+               start += 2;
+               i++
+           } while (i <= 55)
+        };
+        incrementTo2(1);
+
+        cnsl ('#4 ----- end of fourth task -----') 
+        //end of fourth task
+
+        //fifth task
+        cnsl ('#5 ----- fifth task -----') 
+        function discriminant (a,b,c) {
+            let discr = b * b - 4 * a * c;
+
+            if ( discr > 0 ) {
+                cnsl( 'first answer is ' + ( (-b + Math.sqrt(discr)) / (2*a)) )
+                cnsl( 'second answer is ' + ( (-b - Math.sqrt(discr)) / (2*a)) )
+            } else if ( discr == 0 ) {
+                cnsl( 'answer is ' + (-(b / 2*a)) ) 
+            } else {
+                cnsl('no answers')
+            }
+        };
+        discriminant(1,25,20)
+
+        cnsl ('#5 ----- end of fifth task -----')
+        //end of fifth task
+
+        //sixth task
+        cnsl ('#6 ----- sixth task -----') 
+
+        function decrement5 (start) {
+            for ( ; start > 0 ; start -=5 ) {
+                cnsl(start)
+            }
+        }
+        decrement5(90)
+
+        cnsl ('#6 ----- end of sixth task -----') 
+        //end of sixth task
+        
+        //seventh task 
+        cnsl ('#7 ----- eventh task -----') 
+
+        function geometricProgression (start) {
+            let i = 0;
+            do {               
+               cnsl(start);               
+               start *= 2;
+               i++;
+            } while (i <= 20)
+        }
+        geometricProgression(1)
+
+        cnsl ('#7 ----- end of seventh task -----') 
+        //end of seventh task
+
+
+
+        
+    </script>
+</body>
+</html>

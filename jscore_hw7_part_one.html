@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript_core_homework_7_part_1</title>
+</head>
+
+<body>
+    <script>
+        const MyMethods = Object.create({}, {
+            showConsole: {
+                value: function (data) {
+                    console.log(data)
+                },
+            },
+            Robots : {
+                value: function () {
+                    for (let i = 0 ; arguments.length > i ; i++) {
+                        this.showConsole(arguments[i].work())
+                    };
+                },
+            },
+        });
+        
+        let robot = new Robot () ; 
+        let robotСoffe = new CoffeRobot () ;
+        let robotDancer = new RobotDancer () ;     
+        let robotCoocker = new RobotCooker () ;
+        
+        
+        function Robot ()  {
+            this.name = 'Robot';
+            this.voice = 'a simple one.'            
+            this.work = function (){                
+                MyMethods.showConsole('I am a ' + this.name + ', ' + this.voice);
+            };
+        };
+
+        function CoffeRobot () {
+            Robot.call(this);
+            this.name = 'CoffeRobot';
+            this.voice = 'and i make a coffe for you'
+        };
+        
+        function RobotDancer () {
+            Robot.call(this);
+            this.setName = function (name) {
+                this.name = name;
+            };
+            this.setVoice = function (voice) {
+                this.voice = voice;
+            };
+        };
+        robotDancer.setName('RoborDancer');
+        robotDancer.setVoice('and i gonna dance for you ;)');
+
+        function RobotCooker () {
+            Robot.call(this);
+            this.name = 'RobotCooker';
+            this.voice = 'and i make a food for you';
+        };
+
+        MyMethods.Robots(robot,robotСoffe,robotDancer,robotCoocker)
+
+    </script>
+
+</body>
+
+</html>

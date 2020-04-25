@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jscore_hw5</title>
+</head>
+<body>
+    <script>
+        function showConsole (data){
+            console.log (data)
+        }
+
+        //first task 
+        const user = Object.create({}, {});
+        user.name = 'Phylup';
+        user.surname = 'Shevchenko';
+        showConsole('Pushing items in object "user"')
+        showConsole(user);
+        user.name = 'Sergey';
+        showConsole('Changing item in object "user"')
+        showConsole(user);
+        delete user.name;
+        showConsole('Deliting item in object "user"')
+        showConsole(user);
+        //end of first task
+
+        //second task
+        const EmployeeSalaries = Object.create({}, {
+            FirstWorkerSalary : {
+                value: 1000,
+                enumerable: true,
+            },
+            SecondWorkerSalary : {
+                value: 1250,
+                enumerable: true,
+            },
+            ThirdWorkerSalary : {
+                value: 1500,
+                enumerable: true,
+            },
+            FourthWorkerSalary : {
+                value: 1750,
+                enumerable: true,
+            },
+            FifthWorkerSalary : {
+                value: 2000,
+                enumerable: true,
+            },
+        });        
+        function TotalSalary (obj){            
+            let all = 0;            
+            for (let key in obj) {                
+                all += obj[key];                
+            } 
+            showConsole('Total sallary is ' + all)            
+        };
+        let emptyObj = {};        
+        TotalSalary(EmployeeSalaries);
+        showConsole('If object is empty');
+        TotalSalary(emptyObj);
+        //end of second task
+    </script>
+    
+</body>
+</html>
