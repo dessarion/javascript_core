@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jscore_homewor_8</title>
+</head>
+<body>
+    <script>
+        const MyMethods = Object.create({}, {
+            showConsole: {
+                value: function (data) {
+                    console.log(data)
+                },
+            },            
+        });
+        function HourSalary (name,salary) {
+            let employee = name;            
+            this.perHour = salary;
+
+            this.setEmployee = function(setEmployeeName) {
+                name = setEmployeeName;
+            };
+            this.getEmployee = function(){
+                return name;
+            };
+            this.getMonthsly = function() {
+                return ((salary)*8)*23
+            };
+        };
+        HourSalary.prototype.yearSallary = function() {
+            return 'Mister ' + this.getEmployee() + '. Your hourly payemnt will be ' + this.perHour + '. That mean\'s ' + 
+            (this.getMonthsly() * 12) + ' yearly (' + this.getMonthsly() + ' monthly.)';
+        };
+        function MonthSalary (salary) {
+            this.monthSalary = salary;
+
+            this.getPerHour = function () {
+                return (salary / 23) / 8;
+            };
+        }; 
+
+        MonthSalary.prototype = new HourSalary ();
+
+        MonthSalary.prototype.yearSallary = function() {
+            return (this.getEmployee() ? 'Hello mister ' + this.getEmployee() + '. ': '') + 'Your hourly payment will be ' +
+            this.getPerHour() + '. That mean\'s ' + this.monthSalary * 12 + ' yearly (' + this.monthSalary + ' monthly.)'
+        };
+
+        let second_employee = new MonthSalary (1840);
+        second_employee.setEmployee('Jhonathan Loopit');
+        MyMethods.showConsole(second_employee.yearSallary());
+
+        let first_employee = new HourSalary ('Jhon Doe', 10);
+        MyMethods.showConsole(first_employee.yearSallary());
+        
+    </script>
+    
+</body>
+</html>
