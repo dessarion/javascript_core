@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jscore_homework_8_part_2</title>
+</head>
+<body>
+    <script>
+        const MyMethods = Object.create({}, {
+            showConsole: {
+                value: function (data) {
+                    console.log(data)
+                },
+            },            
+        });
+        
+        function Car (mark,wheel,steeringWheel,frame) {
+            this.mark = mark;
+            let wheelCar = new Wheel(wheel);
+            let steeringWheelCar = new SteeringWheel (steeringWheel);
+            let frameCar = new Frame (frame);
+
+            this.completedWheel = function(wheelC) {
+                return wheelCar.getRadius(wheelC);
+            };
+            this.completedSteeringWheel = function(steeringWheelC) {
+                return steeringWheelCar.getDiameter(steeringWheelC);
+            };
+            this.completedFrame = function(frameC) {
+                return frameCar.getType(frameC);
+            };
+            this.resetRadius = function(resetR) {
+                return wheelCar.setRadius(resetR);
+            };
+            this.resetDiameter = function(resetD) {
+                return steeringWheelCar.setDiameter(resetD);
+            };
+            this.resetType = function(resetT) {
+                return frameCar.setType(resetT);
+            };
+            this.changeRadius = function (changesToRadius) {
+                return wheelCar.anotherRadius(changesToRadius);
+            };
+            this.changeDiameter = function (changesToDiameter) {
+                return steeringWheelCar.anotherDiameter(changesToDiameter);
+            };
+            this.changeType = function (changesToType) {
+                return frameCar.anotherType(changesToType);
+            };
+            this.carInfo = function() {
+                return 'Car name = ' + this.mark +'. ( ' + 'Wheel radius = ' + this.completedWheel() +
+                ' Steeringwheel diameter = ' + this.completedSteeringWheel() + 
+                ' Frame number is = ' + this.completedFrame() + ' ).'
+            }        
+        };        
+        // Wheel constructor
+        function Wheel(radius) {
+            this.radius = radius;
+
+            this.setRadius = function(radius) {
+                this.radius = radius;
+            };
+            this.getRadius = function () {
+                return this.radius;
+            };
+            this.anotherRadius = function(radiusChanges) {
+                return this.radius += radiusChanges;
+            };
+        };
+        // SteeringWheel constructor
+        function SteeringWheel (diameter) {
+            this.diameter = diameter;
+
+            this.setDiameter = function(diameter) {
+                this.diameter = diameter;
+            };
+
+            this.getDiameter = function() {
+                return this.diameter;
+            };
+            this.anotherDiameter = function(diameterChanges) {
+                return this.diameter += diameterChanges;
+            };
+        };
+        // Frame constructor
+        function Frame (type) {
+            this.type = type;
+
+            this.setType = function(type) {
+                this.type = type;
+            };
+
+            this.getType = function () {
+                return this.type;
+            };
+            this.anotherType = function(typeChanges) {
+                return this.type *= typeChanges;
+            };
+        };
+        
+        let gazel = new Car ('gazik',1,2,3);
+
+        //test's
+        MyMethods.showConsole(gazel.carInfo());
+
+        gazel.resetRadius(10);
+        gazel.resetDiameter(20);
+        gazel.resetType(30);
+        
+        MyMethods.showConsole(gazel.carInfo());
+
+        gazel.changeRadius(7);
+        gazel.changeDiameter(14);
+        gazel.changeType(11);
+
+        MyMethods.showConsole(gazel.carInfo())
+
+    </script>
+    
+</body>
+</html>
