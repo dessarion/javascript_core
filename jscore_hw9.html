@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript_core_homework_9</title>
+</head>
+
+<body>
+    <script>
+        const MyMethods = Object.create({}, {
+            showConsole: {
+                value: data => console.log(data)
+            },
+            lastInArray: {
+                value: arr => arr[arr.length - 1]
+            },
+            changePenultInArray: {
+                value: (arr, push) => arr.splice((arr.length - 2), 1, push)
+            },
+            deleteAndShow: {
+                value: function (arr) {
+                    let deleted = arr[0] + ' Will be deleted from array.';
+                    arr.splice(0, 1);
+                    return deleted
+                },
+            },
+            filterRange: {
+                value: function (array, a, b) {
+                    let newRange = []
+                    let x = array.indexOf(a);
+                    let y = array.indexOf(b);
+                    if (x < y) {
+                        for (let i = x; i < (y + 1); ++i) {
+                            newRange.push(array[i])
+                        };
+                    } else if (y < x) {
+                        for (let i = y; i < (x + 1); ++i) {
+                            newRange.push(array[i])
+                        };
+                    }
+                    return newRange
+                },
+            },
+            toCamelCase: {
+                value: function (str) {
+                    let arr = str.split('-');
+                    let cameL = [];
+                    cameL.push(arr[0]);
+                    for (let i = 1 ; i < arr.length; i++)
+                        {
+                            let separator = arr[i].split('');
+                            let firstLetter = separator[0];
+                            let f = firstLetter.toUpperCase();                            
+                            separator.splice(0,1,f);
+                            let word = separator.join('');
+                            cameL.push(word);                            
+                        }
+                    return cameL.join('')
+                },
+            },
+
+        });
+
+        //Task #1
+
+        let products = ['one', 'two', 3, 'four', 'five', 'six', 'seven', 8];
+        MyMethods.showConsole(MyMethods.lastInArray(products));
+
+        //Task #2
+
+        let styles = ['Jazz', 'Blues'];
+        styles.push('Rock-n-Roll');
+        MyMethods.showConsole(styles);
+        MyMethods.changePenultInArray(styles, 'Classic')
+        MyMethods.showConsole(styles);
+        MyMethods.showConsole(MyMethods.deleteAndShow(styles));
+        MyMethods.showConsole(styles);
+        styles.unshift('Rap', 'Reggae');
+        MyMethods.showConsole(styles);
+
+        //task #3
+
+        function search(arr, item) {
+            for (let i = 0; i < arr.length; i++) {
+                if (item === arr[i]) {
+                    return `${item} have index [${i}] in current array`
+                }
+            }
+        };
+
+        function searchInArray(arr, item) {
+            return arr.indexOf(item, 0)
+        };
+
+        MyMethods.showConsole(searchInArray(styles, 'test for get -1'));
+        MyMethods.showConsole(search(styles, 'Reggae'))
+        MyMethods.showConsole(searchInArray(styles, 'Reggae'));
+
+        //task #4
+
+        let test = [12, 22, 34, 4, 51, 6, 7, 82, 93]
+
+        MyMethods.showConsole(MyMethods.filterRange(test, 12, 4));
+
+        //task #5
+
+        let string = 'my-short-string';
+
+        MyMethods.showConsole(MyMethods.toCamelCase(string))
+    </script>
+
+</body>
+
+</html>
