@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript_core_homework_10</title>
+</head>
+<body>
+    <script>
+        const MyMethods = Object.create({}, {
+            showConsole: {
+                value: function (data) {
+                    console.log(data)
+                },
+            },
+        });
+        
+        //Homework #10
+
+        let students = [];
+
+        let namesPool = [
+            'Jhonatan Loopit','Christopher Barrie','Martine Burt','Henrika Nicia','Charlie Faust',
+            'Angelus Helge','Laurence Stina','Ardala Carly','Mathilde Gyerek','Zoltan Bacsi',
+            'Feri Ramires','Pierre Ingram','Keshawn Grimes','Tucker Daniel','Emanuel Lutz','Mila Holden',
+            'Gaige Bowman','Enrique Howe','Adrienne Flore','Dylan Jacobson','Michael Burns','Allison Mora',
+            'Preston Lowe','Isla Maxwell','Ezequiel Mckinney','Abril Vaughan','Jada Ray','Darien Willis',
+            'Shan Tsung =)','Erik Butler','Bryce Maddox','Olive Faulkne','Donavan Mclaughlin','Chaya Flemin',
+            'Kristen Hobbs','Alexia Cisneros'
+        ]; //36 Names in pool 
+        
+        //Randomizers 
+
+        function randomizerForNames () {
+            return Math.floor(Math.random() * Math.floor(36))
+        };
+
+        function genders () {
+            return  Math.floor(Math.random() * Math.floor(2)) < 1? 'male' : 'female'
+        }
+        function getAge (lowerPoint) {
+            let randomAge = Math.floor(Math.random() * Math.floor(58)) 
+            if (randomAge > lowerPoint) {
+                return randomAge;
+            } else {
+                return lowerPoint;
+            };
+        }; 
+
+        //Group generator
+
+        function studentsTemplate (groupLenght,array) {
+            for (i = 0 ; i < groupLenght; i++){
+                array.push({
+                    name: namesPool[randomizerForNames()],
+                    sex: genders(),
+                    age: getAge(12), 
+                });
+            };
+        };
+
+        //Tasks
+
+        MyMethods.showConsole('--- show empty array ---');
+        MyMethods.showConsole(students);
+        MyMethods.showConsole('--- generate array ---')
+        studentsTemplate(10,students); // You can generate array with 999+ index =)
+        students.forEach(element => {
+            MyMethods.showConsole(element)
+        });
+
+        //Filter 
+
+        MyMethods.showConsole('--- filter age < 21, sex =="male" ( please refresh if empty =) )---');
+        MyMethods.showConsole('--- also Map them ---')
+
+        students = students
+            .filter(person => person.age < 21 && person.sex === 'male')
+            .map(person => {
+                return {
+                    name: person.name,
+                    age: person.age,
+                    sex: person.sex,
+                    yearsUnderAge: 21 - (person.age)
+                }
+            })
+        students.forEach(element => {
+            MyMethods.showConsole(element)
+        });
+
+        //Sort 
+
+        let nextGroupOfStudents = [];
+        studentsTemplate(8,nextGroupOfStudents);
+        MyMethods.showConsole('--- Generate new group of students ---');
+        nextGroupOfStudents.forEach(element => {
+            MyMethods.showConsole(element)
+        });
+
+        MyMethods.showConsole('--- Sorted array ---');
+
+        function sorter (o1,o2) {
+            if (o1.age > o2.age) {
+                return 1
+            } else if (o1.age < o2.age) {
+                return -1
+            } else {
+
+                let o1Name = o1.name.toLowerCase();
+                let o2Name = o2.name.toLowerCase();
+
+                if (o1Name>o2Name) {
+                    return 1;
+                }else if(o1Name<o2Name) {
+                    return -1;
+                }
+            }
+        };
+
+        nextGroupOfStudents.sort(sorter)
+        
+        nextGroupOfStudents.forEach(element => {
+            MyMethods.showConsole(element)
+        });
+
+
+
+    </script>
+    
+</body>
+</html>
