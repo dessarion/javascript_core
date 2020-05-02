@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript_core_homework_11</title>
+</head>
+
+<body>
+    <script>
+        const myMethods = Object.create({}, {
+            showConsole: {
+                value: data => {
+                    console.log(data)
+                },
+            },
+            upperCasingFstLetter: {
+                value: function (name) {
+                    let firstLetter = name
+                        .charAt(0)
+                        .toUpperCase();
+                    name = name.replace(name.charAt(0), firstLetter);
+                    return name;
+                },
+            },
+            truncate: {
+                value: function (str, maxlength) {                   
+                    if (str.length <= maxlength) {
+                        return str
+                    } else if (maxlength < str.length) {
+                        let dots = '...';
+                        let slicedString = str
+                            .slice(0, maxlength)
+                            .concat(dots);
+                        return slicedString
+                    }
+                },
+            },            
+            extractCurrencyValue: {
+                value: str => -(str.replace('$','').trim())*-1
+            },
+        });
+
+        //Task #1
+
+        let stringTaskOne = 'shang Tsung';
+        myMethods.showConsole('//Task #1');
+        myMethods.showConsole(`--- String with mistake = ${stringTaskOne} ---`);
+        myMethods.showConsole(`--- Fixed first letter = ${myMethods.upperCasingFstLetter(stringTaskOne)} ---`);
+
+        //Task #2
+
+        myMethods.showConsole('//Task #2');
+        let stringTaskTwo = 'This is string for task #2. This string consist of 62 symbols.'  
+        myMethods.showConsole(myMethods.truncate(stringTaskTwo, 10) + ' = 10 symbols truncated');
+        myMethods.showConsole(myMethods.truncate(stringTaskTwo, 62) + ' = string lenght is same like');
+        myMethods.showConsole(myMethods.truncate(stringTaskTwo, 9999) + ' = imposible to truncate');
+
+        //Task #3
+
+        myMethods.showConsole('//Task #3');
+        let stringTaskThree = '      $                    150';
+        myMethods.showConsole(myMethods.extractCurrencyValue(stringTaskThree));
+        
+
+    </script>
+
+</body>
+
+</html>
