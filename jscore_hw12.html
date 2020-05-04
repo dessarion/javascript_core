@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript_core_homework_12</title>
+</head>
+
+<body>
+    <script>
+        const myMethods = Object.create({}, {
+            showConsole: {
+                value: data => {
+                    console.log(data)
+                },
+            },
+            mapToStringValues: {
+                value: function (map) {
+                    map.forEach((value) => {
+                        this.showConsole(`${value.name} : ${value.age}`)
+                    })
+                },
+                
+            }
+        });
+
+        //Task #1
+        class Person {
+            constructor(personData) {
+                this.name = personData.name,
+                this.age = personData.age
+            };
+        };
+
+        const firstPerson = new Person({
+            name: 'Dessarion',
+            age: 33
+        });
+        const secondPerson = new Person({
+            name: 'Antal',
+            age: 35
+        });
+        const thirdPerson = new Person({
+            name: 'Belka',
+            age: 29
+        });
+        const fourthPerson = new Person({
+            name: 'Andriy',
+            age: 31
+        });
+        const fifthPerson = new Person({
+            name: 'Booriy',
+            age: 32
+        });
+
+        const personsMap = new Map();
+
+        personsMap
+            .set('first', firstPerson)
+            .set('second', secondPerson)
+            .set('third', thirdPerson)
+            .set('fourth', fourthPerson)
+            .set('fifth', fifthPerson)
+
+        myMethods.showConsole('----- First task -----\n ')
+        myMethods.mapToStringValues(personsMap);
+
+        //Task #2
+
+        myMethods.showConsole(' \n----- Second task -----\n ')
+
+        function calculator (dightOne,dightTwo,act) {
+            let notAnumber = 'Some of operands is not a number.';
+            let notAnAct = `"${act}" Is incorrect act meaning. Please use some of theese : \n
+            ml = multiplication \n
+            sm = summtion\n
+            dv = division\n
+            sb = subtraction\n\n            
+            'Input act like a string'`;
+            let divideByZero = 'Error because divide by zero is imposible';         
+            if ( isNaN(dightOne) || isNaN(dightTwo) ){
+                    throw notAnumber                
+            };
+            if (act !== 'ml' && act !== 'sm' && act !== 'dv' && act !== 'sb'){
+                throw notAnAct
+            };
+            if (dightTwo === 0 && act === 'dv') {
+                throw divideByZero
+            };
+            try{
+                switch(act){
+                    case 'ml':
+                    return dightOne*dightTwo;                        
+                    break;
+                    case 'sm':
+                    return dightOne+dightTwo;                        
+                    break;
+                    case 'dv':
+                    return dightOne/dightTwo;                        
+                    break;
+                    case 'sb':
+                    return dightOne-dightTwo;                        
+                    break;
+                };
+            }catch{
+                notAnumber,
+                notAnAct,
+                divideByZero               
+            };
+        };
+
+        //Uncoment to see errors
+        //myMethods.showConsole(calculator(10,0,'dv'));
+        //myMethods.showConsole(calculator(10,2,'d'));
+        //myMethods.showConsole(calculator('test',2,'dv'));
+
+        myMethods.showConsole(calculator(7,111,'ml'))
+    </script>
+
+</body>
+
+</html>
