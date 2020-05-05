@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript_core_homework_13</title>
+    <style>
+        .external-red {
+            background-color: red
+        }
+        .external-none {
+            background-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1 style="text-align: center; font-family: Arial, Helvetica, sans-serif;">Javascript core homework 13</h1>
+        <hr>
+        <h2 style="text-align: center; font-family: Arial, Helvetica, sans-serif;">Task #1</h2>
+    </div>
+    <script>
+        function showName() {
+            let name = prompt(
+                'Enter your name:', 'Jhon Doe'
+            );
+            document.write(
+                `<h2 style="text-align: center; font-family: Arial, Helvetica, sans-serif;">Hello ${name}</h2>`
+            );
+        };
+        showName()
+    </script>
+    <hr>
+    <h2 style="text-align: center; font-family: Arial, Helvetica, sans-serif;">Task #2</h2>
+
+    <div id="task2" style="display: flex; flex-direction: column;">
+
+        <div class="list" style="width: 50%; margin: 0 auto;">
+            <a name="list" style="font-weight: 700;">список</a>
+            <ul style="list-style: none;">
+                <li><a href="http://google.com">http://google.com</a></li>
+                <li><a href="/tutorial">/tutorial.html</a></li>
+                <li><a href="local/path">local/path</a></li>
+                <li><a href="ftp://ftp.com/my.zip">ftp://ftp.com/my.zip</a></li>
+                <li><a href="http://nodejs.org">http://nodejs.org</a></li>
+                <li><a href="http://internal.com/test">http://internal.com/test</a></li>
+            </ul>
+        </div>
+
+        <div id="buttons"  style="display: flex;  width: 50%; margin: 0 auto; justify-content: center;">
+            <button id="set" onclick="datRedset()" style="margin-right: 50px; background-color: green; color: white; font-weight: 500;">Aply
+                CSS</button>
+            <button id="delete" onclick="datRedDelete()" style="background-color: red; color: white; font-weight: 500;">Cancel CSS</button>
+        </div>
+    </div>
+
+    <script>
+        
+        function datRedset() {
+            let elements = document.querySelectorAll('li');
+            let arrelements = [...elements]
+            let http = 'http';
+            let ftp = 'ftp'
+            for (let i = 0; elements.length > i; i++) {
+                if (arrelements[i].innerText.includes(http) || arrelements[i].innerText.includes(ftp)) {
+                    arrelements[i].classList.add('external-red');
+                    arrelements[i].classList.remove('external-none');
+                }
+            }
+        };
+        function datRedDelete() {
+            let elements = document.querySelectorAll('li');
+            let arrelements = [...elements]
+            let http = 'http';
+            let ftp = 'ftp'
+            for (let i = 0; elements.length > i; i++) {
+                if (arrelements[i].innerText.includes(http) || arrelements[i].innerText.includes(ftp)) {
+                    arrelements[i].classList.add('external-none');
+                    arrelements[i].classList.remove('external-red')
+                }
+            }
+        };
+        
+        
+        
+        
+    </script>
+
+
+
+</body>
+
+</html>
