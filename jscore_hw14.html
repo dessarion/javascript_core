@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript_core_homework_14</title>
+    <style>
+        h1,
+        h2,
+        ul {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        span {
+            color: red
+        }
+
+        #buttons {
+            width: 60%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 20px;
+            transition: all .5s;
+        }
+
+        button:hover {
+            color: red
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Javascript core homework #14</h1>
+    <hr>
+    <h2>summ of all li elements is : <span id="counter"></span></h2>
+
+    <ul>
+        <li></li>
+        <li></li>
+    </ul>
+    <br>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <br>
+    <ul>
+        <li></li>
+    </ul>
+    <div id="buttons">
+        <button>Put text in list items</button>
+        <button>Count all list items</button>
+    </div>
+
+
+    <script>
+        const myMethods = Object.create({}, {
+            injector: {
+                value: function () {
+
+                    let listItems = document.querySelectorAll('ul>li');
+
+                    let namesPool = [
+                        'Jhonatan Loopit', 'Christopher Barrie', 'Martine Burt', 'Henrika Nicia',
+                        'Charlie Faust',
+                        'Angelus Helge', 'Laurence Stina', 'Ardala Carly', 'Mathilde Gyerek',
+                        'Zoltan Bacsi',
+                        'Feri Ramires', 'Pierre Ingram', 'Keshawn Grimes', 'Tucker Daniel',
+                        'Emanuel Lutz', 'Mila Holden',
+                        'Gaige Bowman', 'Enrique Howe', 'Adrienne Flore', 'Dylan Jacobson',
+                        'Michael Burns', 'Allison Mora',
+                        'Preston Lowe', 'Isla Maxwell', 'Ezequiel Mckinney', 'Abril Vaughan',
+                        'Jada Ray', 'Darien Willis',
+                        'Shan Tsung =)', 'Erik Butler', 'Bryce Maddox', 'Olive Faulkne',
+                        'Donavan Mclaughlin', 'Chaya Flemin',
+                        'Kristen Hobbs', 'Alexia Cisneros'
+                    ];
+
+                    for (let i = 0; i < listItems.length; i++) {
+                        let currentListItem = listItems[i];
+                        currentListItem.innerHTML = namesPool[Math.floor(Math.random() * Math.floor(36))];
+                    }
+                },
+            },
+            listItemsCounter: {
+                value: function () {
+
+                    let listItems = document.querySelectorAll('ul>li');
+                    let thePlace = document.getElementById('counter');
+                    thePlace.innerHTML = listItems.length
+                },
+            },
+        });
+        //Task #1
+        const BTN1 = document.querySelector('#buttons>button:nth-child(1)');
+        BTN1.onclick = () => {
+            myMethods.injector();
+        };
+        //Task #2
+        const BTN2 = document.querySelector('#buttons>button:nth-child(2)');
+        BTN2.onclick = () => {
+            myMethods.listItemsCounter()
+        };
+    </script>
+</body>
+
+</html>
