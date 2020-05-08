@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <style>
+        h1,label,h2 {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .error{
+            background-color: rgb(231, 48, 79);
+        }
+        form{
+            width: 50%;
+            border: 1px solid gray;
+            padding: 5px;
+            text-align: center;
+            margin: 0 auto;
+        }
+    </style>
+    <title>JavaScript_core_homework_#16</title>
+</head>
+
+<body>
+    <h1>JavaScript core homework #16</h1>
+    <h2>Task #1</h2>
+    <hr>
+    <h2>Get method form</h2>
+
+    <form>        
+        <label>Name</label><br>
+            <input type="text" id="userNameGetmethod"><br>
+        <label>Surname</label><br>
+            <input type="text" id="userSurnameGetmethod"><br>
+        <label>Age</label><br>
+        <label id="error"></label><br>
+            <input type="text" id="userAgeGetmethod"><br>
+        <label>Adress</label><br>
+            <input type="text" id="userAdressGetmethod"><br>
+            <input type="button" id="btn" value="Send by Get method">
+    </form>
+
+    <h2>Task #2</h2>
+    <hr>
+    <h2>Post method form</h2>
+
+    <form>        
+        <label>Name</label><br>
+            <input type="text" id="userNamePostmethod"><br>
+        <label>Surname</label><br>
+            <input type="text" id="userSurnamePostmethod"><br>
+        <label>Age</label><br>
+        <label id="error1"></label><br>
+            <input type="text" id="userAgePostmethod"><br>
+        <label>Adress</label><br>
+            <input type="text" id="userAdressPostmethod"><br>
+            <input type="button" id="btn1" value="Send by Post method">
+    </form>
+    
+
+    <script src="ajax.js"></script>
+</body>
+
+</html>
