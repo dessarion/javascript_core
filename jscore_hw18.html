@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        h1,ol{
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <title>JavaScript core homework #18</title>
+</head>
+<body>
+
+    <h1>JavaScript core homework #18</h1>
+    <hr>
+    <ol id="ordered-list"></ol>    
+
+    <script>
+        $(document).ready( () => {
+
+            const months = ['January','February','March','April','May',
+            'June','July','August','September','October','November','December'];
+
+            let counter = 0;
+
+            const inervalIterator = setInterval(()=>{
+
+                if(counter === 12) {
+                    clearInterval(inervalIterator);
+                }else{
+                    $('#ordered-list').append(`<li>${months[counter++]}</li>`)
+                };
+                
+            },1000);
+
+            setTimeout(()=>{
+                $('li:odd').css('color','red')
+            },13500)
+        });
+    </script>
+</body>
+</html>
