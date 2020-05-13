@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        h1,
+        label,
+        h2,
+        .button-container button {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        input{
+            padding: 5px;
+        }
+        .input-container {
+            width: 30%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .button-container{
+            width: 50%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+        .button-container button{
+            padding: 10px;
+        }
+
+        .err {
+            background-color: palevioletred;
+        }
+    </style>
+    <title>ajax_jquery</title>
+</head>
+
+<body>
+    <h1>JavaScript core homework #16</h1>
+    <div class="input-container">
+        <label for="getNameValue">Name</label>
+        <input type="text" id="getNameValue" placeholder="Name">
+        <label for="getSurnameValue">Surname</label>
+        <input type="text" id="getSurnameValue" placeholder="Surname">
+        <label for="getAgeValue">Age</label>
+        <input type="text" id="getAgeValue" placeholder="Age">
+        <label for="getAdressValue">Adress</label>
+        <input type="text" id="getAdressValue" placeholder="Adress">
+    </div>
+    <hr>
+
+
+    <div class="button-container">
+        <button id="getMethod">getMethod</button><br>
+        <button id="postMethod">postMethod</button>
+    </div>
+
+    <div id="serverData">
+
+    </div>
+
+
+    <script src="ajax_jquery_hw19.js"></script>
+</body>
+
+</html>
