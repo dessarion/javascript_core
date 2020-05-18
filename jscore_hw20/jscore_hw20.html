@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{  
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }        
+        .mainOne{            
+            width: 50%;
+            border: 1px solid gray;
+            margin: 0 auto;
+            padding: 20px; 
+            border-radius: 20px;           
+        }
+        form{ 
+            width: 80%;
+            margin: 0 auto; 
+        }
+        form input{
+            display: block;
+            width: 45%;
+            margin: 0 auto;
+
+        }
+        .buttons{
+            display: flex;
+            flex-direction: column;
+            border: 3px double gray;
+            padding: 5px;
+            margin-top: 10px;
+            border-radius: 10px; 
+        }
+        .buttons button{
+            padding: 5px;
+            margin-top: 5px;
+        }
+    </style>
+    <title>JavaScript_core_homework_#20</title>
+</head>
+
+<body>
+    <h1>JavaScript core homework #20</h1>
+    <hr>
+    <div class="mainOne">
+        <form action="">
+            <label for="">Name</label>
+            <input type="text">
+            <label for="">Age</label>
+            <input type="text">
+            <div class="buttons">
+                <button id="toLocalStorage">Submit to Local Storage</button>
+                <button id="fromLocalStorage">From Local Storage</button>
+                <button id="toCookies">To Cookies</button>
+                <button id="fromCookies">From Cookies</button>
+            </div>
+        </form>
+    </div>
+
+
+
+    <script>
+        const BTN = document.querySelector('#toLocalStorage');
+        const BTN1 = document.querySelector('#fromLocalStorage');
+        const BTN2 = document.querySelector('#toCookies');
+        const BTN3 = document.querySelector('#fromCookies');
+
+
+        let toLocalStorage = function () {
+            const person = {
+                personName: document.querySelector('input:nth-child(2)').value,
+                personAge: document.querySelector('input:nth-child(4)').value
+            }
+            return localStorage.setItem('personData', JSON.stringify(person))
+        };
+        let reciveFromLocalSotrage = function () {
+            const data = JSON.parse(localStorage.getItem('personData'));
+            alert(`Name = ${data.personName}\nAge = ${data.personAge}`)
+        };
+
+        let toCookies = function () {
+            document.cookie = `personName=${document.querySelector('input:nth-child(2)').value}`
+            document.cookie = `personAge=${document.querySelector('input:nth-child(4)').value}`
+        };
+        let reciveFromCookies = function () {
+            let cookiesData = document.cookie
+            cookiesData = cookiesData.split('; ')
+            let mappedData = cookiesData.map(arrElem => arrElem.split('='));
+            let concatData = mappedData[0].concat(mappedData[1])
+            return alert(`Name = ${concatData[1]}\nAge = ${concatData[3]}`)
+        }
+        BTN.onclick = () => {
+            toLocalStorage()
+        };
+        BTN1.onclick = () => {
+            reciveFromLocalSotrage()
+        };
+        BTN2.onclick = () => {
+            toCookies()
+        };
+        BTN3.onclick = () => {
+            reciveFromCookies()
+        }
+    </script>
+</body>
+
+</html>
