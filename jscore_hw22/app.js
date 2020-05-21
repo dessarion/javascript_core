@@ -1,7 +1,7 @@
 $(() => {
     $.validator.addMethod('checkISO',(value)=>{
-        return value.length <= 10
-    },'Please enter date in dd-mm-yyyy format')
+        return value.length <= 10;
+    },'Please enter date in dd-mm-yyyy format');
     
     $.validator.addMethod('reverseISO',(value)=>{
         let valueToArr = value.split('-');        
@@ -9,7 +9,7 @@ $(() => {
                 return true
             }  else if (valueToArr[0].length === 2 && valueToArr[1].length === 2 && valueToArr[2].length === 4) {
                 return true
-            }    
+            };    
     },'Please enter date in dd-mm-yyyy format');
 
     $.validator.addMethod('isDigits',(val)=>{
@@ -36,7 +36,6 @@ $(() => {
                 reverseISO: true,
                 isDigits: true,
                 date:true
-                
             }
         },
         messages: {
@@ -56,12 +55,6 @@ $(() => {
         },
         invalidHandler:()=>{
             $('#myForm').effect('shake')
-        }
-        
-        
-    })   
-    
-})
-
-// documentation at https://jqueryvalidation.org/
-// also good documentation about this topic https://www.hostcms.ru/documentation/step-by-step/templates/jquery.validate/
+        }  
+    })  
+});
