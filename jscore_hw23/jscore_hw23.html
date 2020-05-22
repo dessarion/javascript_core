@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        h1{
+            text-align: center;
+            margin: 20px 0 30px 0;
+        }
+        #button{
+            position: absolute;
+            cursor: pointer;
+            border: 1px solid black;
+            width: 100px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            bottom: 10px;
+        }
+        .box,
+        #display{
+            width: 60%;
+            border: 3px double gray;
+            padding: 10px;
+            margin: 10px auto 0 auto;
+            border-radius: 15px;
+        }
+        .box{
+            height: 40vh;
+            position: relative;
+        }
+        #display{
+            height: 10vh;
+        }
+        #currentTime{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border: 1px solid gray;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            text-align: center;            
+        }
+        input{
+            padding: 10px;
+            width: 30%;
+            margin: 50px auto 0 auto;
+            border-radius: 5px;
+        }
+        .shadow{
+            box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+        }
+    </style>
+    <title>JavaScript_core_homework_#23</title>
+</head>
+<body>
+    <h1>JavaScript core homework #23</h1>
+    <hr>
+
+    <div id="currentTime">        
+    </div>
+
+    <div class="box">
+        <form action="">
+            <label for="dateOfBirth">Enter Your Birth Date :</label>
+            <input type="text" id="dateOfBirth" title="
+            Avaliable formats:
+            'DD MM YYYY',
+            'DD-MM-YYYY',
+            'DDMMYYYY',
+            'DD,MM,YYYY',
+            'YYYY MM DD',
+            'YYYY-MM-DD',
+            'YYYYMMDD',
+            'YYYY,MM,DD'">
+        </form>
+        <div id="button" class="shadow">Lets see</div>
+    </div>
+    <div id="display">
+        <p>What day of week will be after twenty years after your birth date?</p> 
+        <p id="displayParagraph"></p>       
+    </div>    
+
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
