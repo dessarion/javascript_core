@@ -43,7 +43,7 @@ const carCollectionGenerator = (length, arr) => {
     }
 };
 
-//Task #2
+//Task #1
 
 carCollectionGenerator(collectionLenght, carCollection);
 
