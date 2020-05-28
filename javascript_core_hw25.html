@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript_core_homework#25</title>
+</head>
+
+<body>
+    <script src="https://underscorejs.org/underscore-min.js"></script>
+    <script>
+        const showConsole = (data, isShown = true) => {
+            if (isShown) {
+                console.log(data)
+            }
+        };
+
+        const generatedArr = _.shuffle(_.range(-50, 31, 4));
+
+        const indexOfMinValue = _.indexOf(generatedArr, _.min(generatedArr));
+
+        const indexOfMaxValue = _.indexOf(generatedArr, _.max(generatedArr));
+
+        //Task #1
+        showConsole(generatedArr),
+        //Task #2
+        showConsole(`Max value is ${generatedArr[indexOfMaxValue]} at index ${indexOfMaxValue}`),
+        //Task #3
+        showConsole(`Min value is ${generatedArr[indexOfMinValue]} at index ${indexOfMinValue}`)
+    </script>
+</body>
+
+</html>
