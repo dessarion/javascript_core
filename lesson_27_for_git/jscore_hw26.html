@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript_core_homework#25</title>
+</head>
+
+<body>
+    <script src="https://underscorejs.org/underscore-min.js"></script>
+    <script>
+        const consoleLog = (data, isDisplayed = false) => {
+            if (isDisplayed) {
+                console.log(data)
+            }
+        };
+
+        //Task #1
+
+        const Auto = function (brandName, model, productionYear) {
+            this.brandName = brandName;
+            this.model = model;
+            this.productionYear = productionYear;
+
+            this.method = function () {
+                alert('Hello world')
+            }
+        };
+
+        const autotaz = {
+            brandName:'Mercedes-Benc',
+            model:'R-classe',
+            productionYear: 2014
+        }
+
+        const auto = _.create(Auto.prototype, autotaz);
+
+        //Task #2
+
+        consoleLog(auto, true);
+
+        //Task #3
+
+        const invertedValues = _.invert(auto);
+
+        consoleLog(invertedValues, true);
+
+        //Task #4
+
+        const picked = _.pick(auto, 'brandName','productionYear');
+
+        const omited = _.omit(auto, 'model');
+
+        consoleLog(picked, true);
+
+        consoleLog(omited, true);
+
+
+    </script>
+</body>
+
+</html>
